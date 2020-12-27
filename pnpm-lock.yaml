@@ -11,6 +11,7 @@ devDependencies:
   '@vue/compiler-sfc': 3.0.4_vue@3.0.4
   autoprefixer: 10.1.0_postcss@8.2.1
   babel-loader: 8.2.2_3d9c2a837cc4b2484cb693b7275aaf13
+  copy-webpack-plugin: 7.0.0_webpack@5.11.0
   css-loader: 5.0.1_webpack@5.11.0
   eslint: 7.16.0
   eslint-config-airbnb-typescript: 12.0.0_397ccb1efdc10aeb8461f165da658842
@@ -2314,6 +2315,24 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
+  /copy-webpack-plugin/7.0.0_webpack@5.11.0:
+    dependencies:
+      fast-glob: 3.2.4
+      glob-parent: 5.1.1
+      globby: 11.0.1
+      loader-utils: 2.0.0
+      normalize-path: 3.0.0
+      p-limit: 3.1.0
+      schema-utils: 3.0.0
+      serialize-javascript: 5.0.1
+      webpack: 5.11.0_webpack-cli@4.3.0
+    dev: true
+    engines:
+      node: '>= 10.13.0'
+    peerDependencies:
+      webpack: ^5.1.0
+    resolution:
+      integrity: sha512-SLjQNa5iE3BoCP76ESU9qYo9ZkEWtXoZxDurHoqPchAFRblJ9g96xTeC560UXBMre1Nx6ixIIUfiY3VcjpJw3g==
   /core-js-compat/3.8.1:
     dependencies:
       browserslist: 4.16.0
@@ -7078,6 +7097,7 @@ specifiers:
   '@vue/compiler-sfc': ^3.0.4
   autoprefixer: ^10.1.0
   babel-loader: ^8.2.2
+  copy-webpack-plugin: ^7.0.0
   css-loader: ^5.0.1
   eslint: ^7.16.0
   eslint-config-airbnb-typescript: ^12.0.0

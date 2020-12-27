@@ -15,6 +15,7 @@ const config = {
   mode: 'development',
   devServer: {
     port: 8080,
+    contentBase: `${__dirname}/static`,
     historyApiFallback: true,
   },
   resolve: {
@@ -59,7 +60,7 @@ const config = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({ template: './index.html', title: 'My Epic App' }),
+    new HtmlWebpackPlugin({ template: `${__dirname}/static/index.html`, title: 'My Epic App' }),
   ],
 };
 

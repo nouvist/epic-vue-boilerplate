@@ -4,7 +4,7 @@
     "checkJs": false,
     "module": "CommonJS",
     "target": "ES6",
-    "lib": ["DOM", "ES6"],
+    "lib": ["DOM", "ES6", "WebWorker", "WebWorker.ImportScripts"],
     "noImplicitAny": true,
     "esModuleInterop": true
   },
