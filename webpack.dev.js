@@ -8,6 +8,7 @@ const config = {
   entry: './index.ts',
   context: `${__dirname}/src`,
   output: {
+    publicPath: '/',
     path: `${__dirname}/dist`,
     filename: '[name].js',
   },
@@ -23,8 +24,8 @@ const config = {
     rules: [
       {
         test: /\.[tj]s$/,
-        exclude: /(node_modules|dist)/,
-        include: /src\/(.+)\/(.+)/,
+        exclude: [`${__dirname}/node_modules`, `${__dirname}/dist`],
+        include: [`${__dirname}/src`],
         use: {
           loader: 'babel-loader',
           options: {
@@ -35,7 +36,7 @@ const config = {
       {
         test: /\.s?css$/,
         exclude: /(node_modules|dist)/,
-        include: /src\/(.+)\/(.+)/,
+        include: [`${__dirname}/src`],
         use: [
           'vue-style-loader',
           'css-loader',
@@ -45,20 +46,20 @@ const config = {
       },
       {
         test: /\.vue$/,
-        exclude: /(node_modules|dist)/,
+        exclude: [`${__dirname}/node_modules`, `${__dirname}/dist`],
         use: 'vue-loader',
       },
       {
         test: /\.(?!(vue|s?css|[tj]s)$)$/,
-        exclude: /(node_modules|dist)/,
-        include: /src\/(.+)\/(.+)/,
+        exclude: [`${__dirname}/node_modules`, `${__dirname}/dist`],
+        include: [`${__dirname}/src`],
         use: 'file-loader',
       },
     ],
   },
   plugins: [
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({ template: './index.html' }),
+    new HtmlWebpackPlugin({ template: './index.html', title: 'My Epic App' }),
   ],
 };
 
