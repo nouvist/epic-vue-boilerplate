@@ -11,6 +11,31 @@
 - Prettier
 - Workbox
 
+## `Folder Structure`
+
+```tree
+.
+├── dist
+├── src
+└── static
+```
+
+### `./dist`
+
+Production build files.
+
+### `./src`
+
+Source code files.
+
+### `./static`
+
+Your static files (e.g: `manifest.json`, `favicon.ico`).
+
+> Please add your assets in `./src` instead.
+
+## `Scripts`
+
 ### `Development server`
 
 ```bash
@@ -20,7 +45,7 @@ npm run dev
 ### `Build`
 
 ```bash
-npm run clean # clean dist directory
+npm run clean # equivalent to "rm -rf dist"
 npm run build
 ```
 
