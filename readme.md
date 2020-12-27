@@ -7,8 +7,7 @@
 - Sass
 - Webpack
 - Obfuscator
-- ESLint
-- ESLint Airbnb Config
+- ESLint (Airbnb config)
 - Prettier
 - Workbox
 
