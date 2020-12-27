@@ -2,9 +2,10 @@
   "name": "epic-vue-boilerplate",
   "scripts": {
     "build": "webpack -c ./webpack.prod.js",
+    "clean": "rm -rf dist",
     "dev": "webpack serve -c ./webpack.dev.js --hot",
     "lint": "eslint . --ext .ts,.vue,.js",
-    "lint:fix": "prettier && npm run lint --fix"
+    "fix": "prettier && npm run lint --fix"
   },
   "dependencies": {
     "vue": "^3.0.4",
@@ -42,6 +43,7 @@
     "webpack": "^5.11.0",
     "webpack-cli": "^4.3.0",
     "webpack-dev-server": "^3.11.0",
-    "webpack-obfuscator": "^3.2.0"
+    "webpack-obfuscator": "^3.2.0",
+    "workbox-webpack-plugin": "^6.0.2"
   }
 }

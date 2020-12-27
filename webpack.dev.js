@@ -25,7 +25,11 @@ const config = {
     rules: [
       {
         test: /\.[tj]s$/,
-        exclude: [`${__dirname}/node_modules`, `${__dirname}/dist`],
+        exclude: [
+          `${__dirname}/node_modules`,
+          `${__dirname}/dist`,
+          `${__dirname}/static`,
+        ],
         include: [`${__dirname}/src`],
         use: {
           loader: 'babel-loader',
@@ -47,12 +51,20 @@ const config = {
       },
       {
         test: /\.vue$/,
-        exclude: [`${__dirname}/node_modules`, `${__dirname}/dist`],
+        exclude: [
+          `${__dirname}/node_modules`,
+          `${__dirname}/dist`,
+          `${__dirname}/static`,
+        ],
         use: 'vue-loader',
       },
       {
         test: /\.(?!(vue|s?css|[tj]s)$)$/,
-        exclude: [`${__dirname}/node_modules`, `${__dirname}/dist`],
+        exclude: [
+          `${__dirname}/node_modules`,
+          `${__dirname}/dist`,
+          `${__dirname}/static`,
+        ],
         include: [`${__dirname}/src`],
         use: 'file-loader',
       },
@@ -60,7 +72,10 @@ const config = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({ template: `${__dirname}/static/index.html`, title: 'My Epic App' }),
+    new HtmlWebpackPlugin({
+      template: `${__dirname}/static/index.html`,
+      title: 'My Epic App',
+    }),
   ],
 };
 
