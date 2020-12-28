@@ -6,12 +6,11 @@ const WebpackObfuscatorPlugin = require('webpack-obfuscator');
 const { GenerateSW } = require('workbox-webpack-plugin');
 
 /**
- *
- * @param {string[]} env
  * @param {import('webpack').Configuration} options
+ * @param {boolean} prod
  * @returns {import('webpack').Configuration}
  */
-module.exports = (env, options) => ({
+const config = (options, prod) => ({
   entry: './index.ts',
   context: `${__dirname}/src`,
   output: {
@@ -32,7 +31,7 @@ module.exports = (env, options) => ({
       ],
     },
   },
-  ...(options.mode == 'production'
+  ...(prod
     ? {}
     : {
         devtool: 'eval-source-map',
@@ -59,9 +58,7 @@ module.exports = (env, options) => ({
         test: /\.s?css$/i,
         exclude: /(node_modules|dist|static)/i,
         use: [
-          ...(options.mode == 'production'
-            ? [MiniCssExtractPlugin.loader]
-            : ['style-loader']),
+          ...(prod ? [MiniCssExtractPlugin.loader] : ['style-loader']),
           'css-loader',
           {
             loader: 'sass-loader',
@@ -97,7 +94,7 @@ module.exports = (env, options) => ({
       filename: 'index.html',
       title: 'My Epic App',
     }),
-    ...(options.mode == 'production'
+    ...(prod
       ? [
           new WebpackObfuscatorPlugin(),
           new copyWebpackPlugin({
@@ -111,3 +108,10 @@ module.exports = (env, options) => ({
       : []),
   ],
 });
+
+/**
+ * @param {string[]} env
+ * @param {import('webpack').Configuration} options
+ * @returns {import('webpack').Configuration}
+ */
+module.exports = (env, options) => config(options, options.mode == 'production');
