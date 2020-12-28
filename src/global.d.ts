@@ -5,5 +5,7 @@ declare module '*.vue' {
   export default component;
 }
 
-declare module '*.scss';
-declare module '*.css';
+declare module '*' {
+  const path: string;
+  export default path;
+}

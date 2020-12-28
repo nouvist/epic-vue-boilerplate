@@ -6,7 +6,11 @@
     "target": "ES6",
     "lib": ["DOM", "ES6"],
     "noImplicitAny": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.vue"],
   "exclude": ["node_nodules", "dist"]

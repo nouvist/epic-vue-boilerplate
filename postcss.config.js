@@ -1,5 +1,5 @@
 const config = {
-  plugins: [require('autoprefixer')],
+  plugins: [require('autoprefixer'), require('postcss-modules')],
 };
 
 module.exports = config;

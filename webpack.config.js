@@ -87,7 +87,6 @@ const config = (options, prod) => ({
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin(),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: `${__dirname}/static/index.html`,
@@ -96,6 +95,7 @@ const config = (options, prod) => ({
     }),
     ...(prod
       ? [
+          new MiniCssExtractPlugin(),
           new WebpackObfuscatorPlugin(),
           new copyWebpackPlugin({
             patterns: ['../static'],
@@ -114,4 +114,5 @@ const config = (options, prod) => ({
  * @param {import('webpack').Configuration} options
  * @returns {import('webpack').Configuration}
  */
-module.exports = (env, options) => config(options, options.mode == 'production');
+module.exports = (env, options) =>
+  config(options, options.mode == 'production');
