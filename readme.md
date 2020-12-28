@@ -1,5 +1,9 @@
 # `🌵 Epic Vue Boilerplate`
 
+<p align="center">
+  <img src="./src/assets/logo.svg"/>
+</p>
+
 [![use template](https://img.shields.io/badge/-use%20template-gree?style=for-the-badge)](../../generate)
 
 - Typescript

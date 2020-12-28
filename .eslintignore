@@ -3,4 +3,3 @@ static
 dist
 .eslintrc.js
 webpack.dev.js
-webpack.prod.js

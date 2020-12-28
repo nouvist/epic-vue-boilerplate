@@ -44,12 +44,8 @@ module.exports = (env, options) => {
     module: {
       rules: [
         {
-          test: /\.[tj]s$/,
-          exclude: [
-            `${__dirname}/node_modules`,
-            `${__dirname}/dist`,
-            `${__dirname}/static`,
-          ],
+          test: /\.[tj]s$/i,
+          exclude: /(node_modules|dist|static)/i,
           use: {
             loader: 'babel-loader',
             options: {
@@ -58,12 +54,8 @@ module.exports = (env, options) => {
           },
         },
         {
-          test: /\.s?css$/,
-          exclude: [
-            `${__dirname}/node_modules`,
-            `${__dirname}/dist`,
-            `${__dirname}/static`,
-          ],
+          test: /\.s?css$/i,
+          exclude: /(node_modules|dist|static)/i,
           use: [
             ...(options.mode == 'production'
               ? [MiniCssExtractPlugin.loader]
@@ -78,18 +70,15 @@ module.exports = (env, options) => {
             'postcss-loader',
           ],
         },
-        // {
-        //   test: /\.(?!vue|s?css|[tj]s$)(.+)$/,
-        //   use: 'file-loader',
-        // },
         {
-          test: /\.vue$/,
-          exclude: [
-            `${__dirname}/node_modules`,
-            `${__dirname}/dist`,
-            `${__dirname}/static`,
-          ],
+          test: /\.vue$/i,
+          exclude: /(node_modules|dist|static)/i,
           use: 'vue-loader',
+        },
+        {
+          test: /\.(?!vue|s?css|[tj]s|html$)(.+$)/i,
+          exclude: /(node_modules|dist|static)/i,
+          use: 'file-loader',
         },
       ],
     },
@@ -98,6 +87,7 @@ module.exports = (env, options) => {
       new VueLoaderPlugin(),
       new HtmlWebpackPlugin({
         template: `${__dirname}/static/index.html`,
+        filename: 'index.html',
         title: 'My Epic App',
       }),
       ...(options.mode == 'production'
