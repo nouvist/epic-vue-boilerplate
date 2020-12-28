@@ -1,9 +1,9 @@
 {
   "name": "epic-vue-boilerplate",
   "scripts": {
+    "prebuild": "rm -rf dist",
     "build": "webpack --mode production",
     "dev": "webpack serve --hot --mode development",
-    "clean": "rm -rf dist",
     "lint": "eslint . --ext .ts,.vue,.js",
     "fix": "prettier && npm run lint --fix"
   },

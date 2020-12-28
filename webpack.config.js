@@ -17,7 +17,7 @@ module.exports = (env, options) => ({
   output: {
     publicPath: '/',
     path: `${__dirname}/dist`,
-    filename: '[name].js',
+    filename: 'js/[name].js',
   },
   mode: options.mode,
   devServer: {
@@ -75,7 +75,12 @@ module.exports = (env, options) => ({
       {
         test: /\.(?!vue|s?css|[tj]s|html$)(.+$)/i,
         exclude: /(node_modules|dist|static)/i,
-        use: 'file-loader',
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[ext]/[name].[ext]',
+          },
+        },
       },
     ],
   },

@@ -49,7 +49,6 @@ npm run dev
 ### `Build`
 
 ```bash
-npm run clean # equivalent to "rm -rf dist"
 npm run build
 ```
 
