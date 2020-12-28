@@ -2,4 +2,5 @@ node_modules
 static
 dist
 .eslintrc.js
-webpack.dev.js
+webpack.config.js
+postcss.config.js
