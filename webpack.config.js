@@ -17,7 +17,7 @@ module.exports = (env, options) => ({
   output: {
     publicPath: '/',
     path: `${__dirname}/dist`,
-    filename: 'js/[name].js',
+    filename: 'js/[hash].js',
   },
   mode: options.mode,
   devServer: {
@@ -32,6 +32,11 @@ module.exports = (env, options) => ({
       ],
     },
   },
+  ...(options.mode == 'production'
+    ? {}
+    : {
+        devtool: 'eval-source-map',
+      }),
   resolve: {
     extensions: ['.ts', '.js'],
     alias: {

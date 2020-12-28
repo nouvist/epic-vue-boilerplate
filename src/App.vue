@@ -10,6 +10,9 @@ export default defineComponent({
   setup() {
     const count = ref(0);
     const increment = () => {
+      if (count.value > 1) {
+        throw new Error('epic');
+      }
       count.value += 1;
     };
     return { count, increment };
