@@ -29,8 +29,9 @@ body {
 }
 </style>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped module>
 .logo {
+  // comment
   display: block;
   margin: auto;
   margin-bottom: 60px;

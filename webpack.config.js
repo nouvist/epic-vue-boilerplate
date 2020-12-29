@@ -19,23 +19,22 @@ const config = (options, prod) => ({
     filename: 'js/[hash].js',
   },
   mode: options.mode,
-  devServer: {
-    port: 8080,
-    contentBase: `${__dirname}/static`,
-    historyApiFallback: true,
-    watchOptions: {
-      ignored: [
-        `${__dirname}/node_modules`,
-        `${__dirname}/dist`,
-        `${__dirname}/static`,
-      ],
+  ...(!prod && {
+    devServer: {
+      hot: true,
+      port: 3000,
+      contentBase: `${__dirname}/static`,
+      historyApiFallback: true,
+      watchOptions: {
+        ignored: [
+          `${__dirname}/node_modules`,
+          `${__dirname}/dist`,
+          `${__dirname}/static`,
+        ],
+      },
     },
-  },
-  ...(prod
-    ? {}
-    : {
-        devtool: 'eval-source-map',
-      }),
+    devtool: 'eval-source-map',
+  }),
   resolve: {
     extensions: ['.ts', '.js'],
     alias: {
@@ -61,12 +60,19 @@ const config = (options, prod) => ({
           ...(prod ? [MiniCssExtractPlugin.loader] : ['style-loader']),
           'css-loader',
           {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [require('autoprefixer')],
+              },
+            },
+          },
+          {
             loader: 'sass-loader',
             options: {
               additionalData: '@import "@/index.scss";',
             },
           },
-          'postcss-loader',
         ],
       },
       {
